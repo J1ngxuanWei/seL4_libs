@@ -272,6 +272,7 @@ static int _allocman_cspace_alloc(allocman_t *alloc, cspacepath_t *slot, int use
 static seL4_Word _allocman_utspace_alloc(allocman_t *alloc, size_t size_bits, seL4_Word type, const cspacepath_t *path,
                                          uintptr_t paddr, bool canBeDev, int *_error, int use_watermark)
 {
+    printf("===========2\n");
     int root_op;
     int error;
     seL4_Word ret;
@@ -297,6 +298,8 @@ static seL4_Word _allocman_utspace_alloc(allocman_t *alloc, size_t size_bits, se
     /* Attempt the allocation */
     alloc->utspace_alloc_depth++;
     ret = alloc->utspace.alloc(alloc, alloc->utspace.utspace, size_bits, type, path, paddr, canBeDev, &error);
+    if ((unsigned long)paddr != 1)
+        printf("===============3, paddr : %lx, ret: %i, error: %i\n", (unsigned long)paddr, (int)ret, error);
     alloc->utspace_alloc_depth--;
     if (!error) {
         _end_operation(alloc, root_op);
@@ -315,6 +318,7 @@ static seL4_Word _allocman_utspace_alloc(allocman_t *alloc, size_t size_bits, se
     } else {
         _end_operation(alloc, root_op);
         SET_ERROR(_error, 1);
+        printf("===========8\n");
         return 0;
     }
 }
