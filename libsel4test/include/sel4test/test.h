@@ -73,6 +73,10 @@ struct env {
     int cspace_size_bits;
     int num_regions;
     sel4utils_elf_region_t regions[MAX_REGIONS];
+
+    /* platsupport IO ops structure to use for the pci */
+    ps_io_ops_t pci_inops;
+    ps_io_ops_t pci_outops;
 };
 typedef struct env *env_t;
 
