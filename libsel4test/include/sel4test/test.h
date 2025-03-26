@@ -73,6 +73,14 @@ struct env {
     int cspace_size_bits;
     int num_regions;
     sel4utils_elf_region_t regions[MAX_REGIONS];
+
+    /* caps for the net mmio */
+    seL4_CPtr net_cap[32];
+
+    /* io_ops for the net */
+    ps_io_ops_t net_ops;
+
+    struct eth_driver *eth_driver;
 };
 typedef struct env *env_t;
 

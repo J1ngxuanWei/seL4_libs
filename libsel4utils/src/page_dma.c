@@ -185,6 +185,7 @@ static void dma_cache_op(void *cookie, void *addr, size_t size, dma_cache_op_t o
 
 int sel4utils_new_page_dma_alloc(vka_t *vka, vspace_t *vspace, ps_dma_man_t *dma_man)
 {
+    printf("=============2\n");
     dma_man_t *dma = calloc(1, sizeof(*dma));
     if (!dma) {
         return -1;
