@@ -127,7 +127,6 @@ static int am_vka_utspace_alloc (void *data, const cspacepath_t *dest, seL4_Word
  */
 static int am_vka_utspace_alloc_at (void *data, const cspacepath_t *dest, seL4_Word type, seL4_Word size_bits, uintptr_t paddr, seL4_Word *res)
 {
-    printf("===========1\n");
     int error;
 
     assert(data);
